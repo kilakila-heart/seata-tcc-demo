@@ -1,11 +1,12 @@
 package pers.kerry.seata.demo.storageservice.controller;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import pers.kerry.seata.demo.storageservice.service.StorageService;
+
+import java.util.Random;
 
 /**
  * @description:
@@ -16,13 +17,19 @@ import pers.kerry.seata.demo.storageservice.service.StorageService;
 @RequestMapping("storage")
 public class StorageController {
     private final StorageService storageService;
-    public StorageController(StorageService storageService){
-        this.storageService=storageService;
+
+    public StorageController(StorageService storageService) {
+        this.storageService = storageService;
     }
 
     @GetMapping("/decrease-storage")
-    public String decreaseStorage(@RequestParam("productId") Long productId,@RequestParam("count") Integer count)  {
-        storageService.decreaseStorage(productId,count);
+    public String decreaseStorage(@RequestParam("productId") Long productId, @RequestParam("count") Integer count) {
+        storageService.decreaseStorage(productId, count);
+        Random rand = new Random();
+        boolean result = rand.nextBoolean();
+        if (result) {
+            System.out.println(1 / 0);
+        }
         return "减少商品库存成功！";
     }
 }

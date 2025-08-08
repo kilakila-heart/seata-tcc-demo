@@ -13,7 +13,15 @@
     <artifactId>seata-tcc-demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>seata-tcc-demo</name>
+    <packaging>pom</packaging>
     <description>seata tcc模式的demo</description>
+
+    <modules>
+        <module>account-service</module>
+        <module>eureka-server</module>
+        <module>order-service</module>
+        <module>storage-service</module>
+    </modules>
 
     <properties>
         <eureka-client.version>2.2.3.RELEASE</eureka-client.version>
@@ -90,7 +98,7 @@
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${spring-cloud.version}}</version>
+                <version>${spring-cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
